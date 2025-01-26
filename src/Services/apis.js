@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:4000/api/v1";
+const baseUrl = import.meta.env.VITE_API_URL;
 
 export const auth = {
     SIGNUP_API: `${baseUrl}/signUp`

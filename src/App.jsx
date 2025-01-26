@@ -37,6 +37,10 @@ function App() {
           ) : (
             <Route path="/login" element={<Login />}></Route>
           )}
+           <Route
+            path="/"
+            element={token ? <Navigate to="/home" replace /> : <Navigate to="/login" replace />}
+          />
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/verification" element={<OtpVerificationPage />}></Route>
           <Route path="/card" element={<FoodCard />}></Route>
