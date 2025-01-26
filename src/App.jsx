@@ -23,7 +23,7 @@ function App() {
   }, []);
 
   const { token } = useSelector((state) => state.auth);
-  // const token = null;
+  //const token = localStorage.removeItem();
   // console.log(token);
 
   return (
