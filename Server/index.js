@@ -16,7 +16,7 @@ dotenv.config();
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT;
 
 app.use(express.json());
 app.use(
