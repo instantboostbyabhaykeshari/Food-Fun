@@ -56,7 +56,7 @@ const Login = () => {
             toast.error("Enter mobile number.");
         }else {
             try{
-                const response = await apiConnector("POST", "http://localhost:4000/api/v1/sendOtp", {email});
+                const response = await apiConnector("POST", "http://localhost:3000/api/v1/sendOtp", {email});
                 console.log(response);
                 //Set signUpData state 
                 dispatch(setSignUpData(signUpData));
