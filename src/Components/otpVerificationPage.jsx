@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import OtpInput from 'react-otp-input';
-import "../Styles/otpVerificationPage.css";
 import { Link, useNavigate } from 'react-router-dom';
-import apiConnector from '../Services/apiConnector';
 import { useDispatch, useSelector } from 'react-redux';
-import "../Styles/Pages/otpVerificationPage.css";
 import { signUp } from '../Services/Operations/authAPI';
+import "../Styles/Pages/otpVerificationPage.css";
 
 function OtpVerificationPage() {
     let [otp, setOtp] = useState("");
@@ -32,7 +30,7 @@ function OtpVerificationPage() {
           <div>
             <div className='otpVerificationPageDetails'>
               <p className='verificationCodePara'>Verification Code</p>
-              <p className='weHaveSentVerificationCode'>We have sent the verification code to your email address <span className='userEmailAtVerificationTime'>{signUpData.email}</span></p>
+              <p className='weHaveSentVerificationCode'>We have sent the verification code to your email address <i className='userEmailAtVerificationTime'>{signUpData.email}</i></p>
             </div>
             <form className='otpVerificationForm' onSubmit={handleVerifyAndSignUp}>
               <OtpInput
