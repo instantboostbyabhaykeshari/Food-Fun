@@ -5,7 +5,7 @@ const Splash = () => {
     return(
         <div className="splash">
             <img src={logo} alt="Abhay" />
-            <h1>BiteTasty</h1>
+            <h1>Food Fun</h1>
         </div>
     )
 }

@@ -55,6 +55,7 @@ const Login = () => {
         if(formData.mobileNo === ""){
             toast.error("Enter mobile number.");
         }else {
+            const toastId = toast.loading("Sending OTP...");
             try{
                 const response = await apiConnector("POST", "https://backend-fygl.onrender.com/api/v1/sendOtp", {email});
                 console.log(response);
@@ -65,6 +66,7 @@ const Login = () => {
             }catch(err){
                 console.log(err);
             }
+            toast.dismiss(toastId);
         }
     }
 

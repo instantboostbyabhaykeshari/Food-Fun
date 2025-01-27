@@ -26,7 +26,7 @@ function OtpVerificationPage() {
   return (
     <div className="verify">
         {
-          loading ? (<div style={{width: "100vw", height: "100vh"}}><div className="spinner"></div></div>) : (
+          loading ? (<div className='spinnerDiv'><div className="spinner"></div></div>) : (
           <div>
             <div className='otpVerificationPageDetails'>
               <p className='verificationCodePara'>Verification Code</p>
