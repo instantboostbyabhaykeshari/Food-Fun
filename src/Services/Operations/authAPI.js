@@ -8,7 +8,7 @@ export function signUp (email, phoneNumber, otp, navigate) {
         const toastId = toast.loading("Loading...");
         dispatch(setLoading(true));
         try{
-            const response = await apiConnector("POST", "http://localhost:4000/api/v1/signUp", {
+            const response = await apiConnector("POST", auth.SIGNUP_API, {
                 email,
                 phoneNumber,
                 otp,

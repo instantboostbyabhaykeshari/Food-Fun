@@ -57,7 +57,7 @@ const Login = () => {
         }else {
             const toastId = toast.loading("Sending OTP...");
             try{
-                const response = await apiConnector("POST", "http://localhost:4000/api/v1/sendOtp", {email});
+                const response = await apiConnector("POST", "https://backend-fygl.onrender.com/api/v1/sendOtp", {email});
                 // console.log("Login Page response: ", response);
                 //Set signUpData state 
                 dispatch(setSignUpData(signUpData));

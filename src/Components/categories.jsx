@@ -25,22 +25,30 @@ const Categories = () => {
                 <Link to={"/all-food-items"} style={{textDecoration: "none", color: "#C2C2C2"}}><p>See All</p></Link>
             </div>
             <div className="top">
-                <div className="pizza">
-                    <div className="showCategories first"></div>
-                    <p>Pizza</p>
-                </div>
-                <div className="burger">
-                    <div className="showCategories second"></div>
-                    <p>Burger</p>
-                </div>
-                <div className="momos">
-                    <div className="showCategories third"></div>
-                    <p>Momos</p>
-                </div>
-                <div className="chow">
-                    <div className="showCategories fourth"></div>
-                    <p>Chowmein</p>
-                </div>
+                <Link to={"/all-food-items?category=Pizza"} className="CategoriesLinkClassName">
+                    <div className="pizza">
+                        <div className="showCategories first"></div>
+                        <p>Pizza</p>
+                    </div>
+                </Link>
+                <Link to={"/all-food-items?category=Burger"} className="CategoriesLinkClassName">
+                    <div className="burger">
+                        <div className="showCategories second"></div>
+                        <p>Burger</p>
+                    </div>
+                </Link>
+                <Link to={"/all-food-items?category=South-Indian"} className="CategoriesLinkClassName">
+                    <div className="momos">
+                        <div className="showCategories third"></div>
+                        <p>Dosa</p>
+                    </div>
+                </Link>
+                <Link to={"/all-food-items?category=Chinese"} className="CategoriesLinkClassName">
+                    <div className="chow">
+                        <div className="showCategories fourth"></div>
+                        <p>Chowmein</p>
+                    </div>
+                </Link>
             </div>
         </div>
     )

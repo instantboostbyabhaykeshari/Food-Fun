@@ -26,7 +26,7 @@ function OtpVerificationPage() {
 
     otp = Number(otp);
 
-    const sendOtp = async() => {
+    const resendOtp = async() => {
       const toastId = toast.loading("Sending OTP...");
         try{
           const response = await apiConnector("POST", "https://backend-fygl.onrender.com/api/v1/sendOtp", {email});
@@ -59,7 +59,7 @@ function OtpVerificationPage() {
               />
               <button className='verifyEmailButton' type="submit">Verify</button>
             </form>
-            <div className='resendOTP' onClick={()=>sendOtp()}><BsArrowCounterclockwise /><p>Resend otp</p></div>
+            <div className='resendOTP' onClick={()=>resendOtp()}><BsArrowCounterclockwise /><p>Resend otp</p></div>
           </div>)
         }
     </div>

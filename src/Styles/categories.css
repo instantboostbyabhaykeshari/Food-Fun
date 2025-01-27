@@ -25,6 +25,10 @@
     margin-top: 25px;
 }
 
+.CategoriesLinkClassName {
+    text-decoration: none;
+}
+
 .pizza, .burger, .momos, .chow {
     display: flex;
     flex-direction: column;
