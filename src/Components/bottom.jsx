@@ -11,9 +11,9 @@ import "../Styles/bottom.css";
 const Bottom = () => {
     const route = useLocation();
     const {signUpData} = useSelector((state)=>state.auth);
-    console.log("signUpData: ", signUpData.email);
+    // console.log("signUpData: ", signUpData.email);
 
-    console.log("Abhay", import.meta.env);
+    // console.log("Abhay", import.meta.env);
     
     const matchRoute = (path) => {
         return route.pathname === path;

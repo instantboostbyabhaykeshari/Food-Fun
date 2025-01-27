@@ -3,6 +3,9 @@ import OtpInput from 'react-otp-input';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUp } from '../Services/Operations/authAPI';
+import { BsArrowCounterclockwise } from "react-icons/bs";
+import toast from 'react-hot-toast';
+import apiConnector from '../Services/apiConnector';
 import "../Styles/Pages/otpVerificationPage.css";
 
 function OtpVerificationPage() {
@@ -12,6 +15,8 @@ function OtpVerificationPage() {
 
     const {signUpData, loading} = useSelector((state) => state.auth);
     console.log(signUpData);
+    const email = signUpData.email;
+    console.log("OTP verification email: ", email);
 
     const handleVerifyAndSignUp = (event) => {
       event.preventDefault();
@@ -21,7 +26,16 @@ function OtpVerificationPage() {
 
     otp = Number(otp);
 
-    // console.log(typeof otp);
+    const sendOtp = async() => {
+      const toastId = toast.loading("Sending OTP...");
+        try{
+          const response = await apiConnector("POST", "https://backend-fygl.onrender.com/api/v1/sendOtp", {email});
+          console.log(response);
+        }catch(err){
+            console.log(err);
+        }
+        toast.dismiss(toastId);
+  }
 
   return (
     <div className="verify">
@@ -45,6 +59,7 @@ function OtpVerificationPage() {
               />
               <button className='verifyEmailButton' type="submit">Verify</button>
             </form>
+            <div className='resendOTP' onClick={()=>sendOtp()}><BsArrowCounterclockwise /><p>Resend otp</p></div>
           </div>)
         }
     </div>

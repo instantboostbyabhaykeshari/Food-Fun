@@ -8,14 +8,13 @@ export function signUp (email, phoneNumber, otp, navigate) {
         const toastId = toast.loading("Loading...");
         dispatch(setLoading(true));
         try{
-            const response = await apiConnector("POST", auth.SIGNUP_API, {
+            const response = await apiConnector("POST", "http://localhost:4000/api/v1/signUp", {
                 email,
                 phoneNumber,
                 otp,
             });
     
             console.log("SignUp API response: ", response);
-            console.log("Token: ", response.data.token);
             dispatch(setToken(response.data.token));
 
             try{
@@ -41,8 +40,12 @@ export function signUp (email, phoneNumber, otp, navigate) {
 export const logout = (navigate, email) => {
     return async(dispatch) => {
         try{
-            const response = await apiConnector("DELETE", "https://backend-fygl.onrender.com/api/v1/deleteUser", {email});
-            console.log("Logout response: ", response);
+            // const response = await apiConnector("POST", "http://localhost:4000/api/v1/deleteUser", {email});
+            // if(!response){
+            //     console.log("Logout api fech response not found.");
+            // }
+
+            // console.log("Logout response: ", response);
 
             dispatch(setToken(null));
             dispatch(setSignUpData(null));

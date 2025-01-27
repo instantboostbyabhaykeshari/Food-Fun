@@ -85,6 +85,15 @@
   color: #EEF7EF ;
 }
 
+.resendOTP {
+  width: 90vw;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 5px;
+}
+
 .spinnerDiv {
   width: 100vw;
   height: 100vh;

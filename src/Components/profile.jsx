@@ -19,7 +19,7 @@ const Profile = () => {
     const navigate = useNavigate();
     const {signUpData} = useSelector((state)=>state.auth);
     const [confirmationModal, setConfirmationModal] = useState(null);
-    console.log(signUpData);
+    // console.log("Profile SignUpData: ",signUpData);
 
     return (
         <div className="profilePage">
@@ -63,7 +63,7 @@ const Profile = () => {
                         btn1Text: "Logout",
                         btn2Text: "Cancel",
                         btn1Handler: () => {
-                        dispatch(logout(navigate, signUpData.email)); // Proceed with logout
+                        dispatch(logout(navigate)); // Proceed with logout
                         setConfirmationModal(null); // Close modal after logout
                         },
                         btn2Handler: () => setConfirmationModal(null), // Cancel action
