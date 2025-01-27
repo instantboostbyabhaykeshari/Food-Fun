@@ -19,7 +19,7 @@ function AllFoodItems() {
   useEffect(() => {
     try{
       const showAllFoodCategories = async() => {
-        const response = await apiConnector("GET", "http://localhost:4000/api/category/showAllCategories");
+        const response = await apiConnector("GET", "https://backend-fygl.onrender.com/api/category/showAllCategories");
         console.log("Show all categories response: ", response);
         if(response?.data){
           setShowAllCategory(response?.data?.allCategories);

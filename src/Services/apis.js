@@ -7,3 +7,7 @@ export const auth = {
 export const order = {
     ALL_ORDER: `${baseUrl}/order/allOrder`
 }
+
+export const category = {
+    ALL_CATEGORY: `${baseUrl}/api/category/showAllCategories`
+}
