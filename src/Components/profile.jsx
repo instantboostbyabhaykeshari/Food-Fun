@@ -63,7 +63,7 @@ const Profile = () => {
                         btn1Text: "Logout",
                         btn2Text: "Cancel",
                         btn1Handler: () => {
-                        dispatch(logout(navigate)); // Proceed with logout
+                        dispatch(logout(navigate, signUpData.email)); // Proceed with logout
                         setConfirmationModal(null); // Close modal after logout
                         },
                         btn2Handler: () => setConfirmationModal(null), // Cancel action

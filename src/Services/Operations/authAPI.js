@@ -38,9 +38,12 @@ export function signUp (email, phoneNumber, otp, navigate) {
 }
 
 //logout
-export const logout = (navigate) => {
+export const logout = (navigate, email) => {
     return async(dispatch) => {
         try{
+            const response = await apiConnector("DELETE", "https://backend-fygl.onrender.com/api/v1/deleteUser", {email});
+            console.log("Logout response: ", response);
+
             dispatch(setToken(null));
             dispatch(setSignUpData(null));
             localStorage.removeItem("token");
