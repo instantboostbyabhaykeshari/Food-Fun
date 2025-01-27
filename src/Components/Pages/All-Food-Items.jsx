@@ -42,7 +42,7 @@ function AllFoodItems() {
   useEffect(() => {
     try{
       const categoryPageDetails = async() => {
-        const response = await apiConnector("POST", "http://localhost:4000/api/category/details", { categoryName: activeCategory })
+        const response = await apiConnector("POST", "https://backend-fygl.onrender.com/api/category/details", { categoryName: activeCategory })
         
         if(response?.data?.data){
           setFoodItems(response?.data?.data?.selectedCategory[0].foodItems);
