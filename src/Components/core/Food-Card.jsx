@@ -9,7 +9,7 @@ function FoodCard({amount, foodItemName, foodItemThumbnail, foodItemDescription,
   return (
     <div className='foodCard'>
       <img className="cardImage" src={foodItemThumbnail} alt="pizza-image" />
-      <FaRegBookmark className='foodCardBookmark'/>
+      <div className='foodCardBookmark'><FaRegBookmark /></div>
       <div className="foodItemNameRating">
         <p>{foodItemName}</p>
         <div className="foodItemRating">

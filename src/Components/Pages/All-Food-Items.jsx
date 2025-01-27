@@ -18,6 +18,8 @@ function AllFoodItems() {
   const [activeCategory, setActiveCategory] = useState("Pizza");
   const [foodItems, setFoodItems] = useState();
 
+  console.log("All food items: ", loading);
+
   useEffect(() => {
     try{
       const showAllFoodCategories = async(dispatch) => {
@@ -47,23 +49,39 @@ function AllFoodItems() {
   }
 
   useEffect(() => {
-    try{
-      const categoryPageDetails = async() => {
-        const response = await apiConnector("POST", "https://backend-fygl.onrender.com/api/category/details", { categoryName: activeCategory })
+    const categoryPageDetails = async () => {
+      try {
+        dispatch(setLoading(true)); // Set loading to true before the request starts
+        const response = await apiConnector(
+          "POST",
+          "https://backend-fygl.onrender.com/api/category/details",
+          { categoryName: activeCategory }
+        );
+  
         console.log("CategoryPageDetails: ", response);
-        
-        if(response?.data?.data){
-          setFoodItems(response?.data?.data?.selectedCategory[0].foodItems);
-          console.log("Category page details response: ", response?.data?.data?.selectedCategory[0].foodItems);
+  
+        if (response?.data?.data) {
+          setFoodItems(response?.data?.data?.selectedCategory[0]?.foodItems || []);
+          console.log(
+            "Category page details response: ",
+            response?.data?.data?.selectedCategory[0]?.foodItems
+          );
+        } else {
+          setFoodItems([]); // Handle case where no data is returned
+          toast.error("Failed to fetch food items for this category");
         }
+      } catch (err) {
+        console.log(err);
+        console.log("Error in fetching category page details API.");
+        toast.error("An error occurred while fetching food items");
+      } finally {
+        dispatch(setLoading(false)); // Ensure loading is set to false after the request
       }
-      categoryPageDetails();
-    }catch(err){
-      console.log(err);
-      console.log("Error in fetching category page details api.");
-    }
-  }, [activeCategory]);
-
+    };
+  
+    categoryPageDetails();
+  }, [activeCategory, dispatch]);
+  
   const addToCart = (foodItemName, foodItemPrice) => {
     const foodItem = {
       foodItemName,
@@ -75,25 +93,28 @@ function AllFoodItems() {
   }
   
   return (
-    <div>
+    <div className="AllFoodItemsPage">
       <Header/>
       <div className="foodListingDiv">
         <div className="foodListing">
           {
             showAllCategory.length > 0 ? (
               showAllCategory.map((item)=> (
-                <div key={item.id} className={item.name ? "active": "nonActive"} onClick={()=>handleCategoryClick(item.name)}>{item.name}</div>
+                <div key={item.id} className={item.name===activeCategory ? "active": "nonActive"} onClick={()=>handleCategoryClick(item.name)}>{item.name}</div>
               ))
-            ) : (<div>No any food category exist.</div>)
+            ) : (<div></div>)
           }
         </div>
       </div>
       {
-        foodItems ? (
-          foodItems.map((foodItem)=>(
-            <FoodCard amount={foodItem.price} foodItemName={foodItem.foodItemName} foodItemDescription={foodItem.foodItemDescription} foodItemThumbnail={foodItem.thumbnail} addToCart={()=>addToCart(foodItem.foodItemName, foodItem.price)} />
-          ))
-          ): (<div className="noFoodExistForThisCategory">No food items exist for this category.</div>)
+        loading ? (<div className="allFoodItemsLoaderDiv"><div className="allFoodItemsLoader"></div></div>) : 
+        (
+          foodItems ? (
+            foodItems.map((foodItem)=>(
+              <FoodCard amount={foodItem.price} foodItemName={foodItem.foodItemName} foodItemDescription={foodItem.foodItemDescription} foodItemThumbnail={foodItem.thumbnail} addToCart={()=>addToCart(foodItem.foodItemName, foodItem.price)} />
+            ))
+            ): (<div className="noFoodExistForThisCategory">No food items exist for this category.</div>)
+        )
       }
       <Bottom/>
     </div>

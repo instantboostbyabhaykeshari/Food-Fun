@@ -1,9 +1,22 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import apiConnector from "../Services/apiConnector";
 import "../Styles/categories.css";
 
 const Categories = () => {
-    
 
+    useEffect(() => {
+        const getCategory = async() => {
+            try{        
+                const response = await apiConnector("GET", "http://localhost:4000/api/category/showAllCategories");
+                console.log("Get all categories response in category component: ", response);
+            }catch(err){
+                console.log(err);
+                console.log("Error in getting category details in category component.");
+            }
+        }
+        getCategory();
+    }, []);
 
     return (
         <div className="mid">

@@ -1,53 +1,120 @@
-.foodListingDiv {
-    width: 100vw;
-    height: 70px;
-    background-color: #EEF7EF;
-    display: flex;
-    align-items: center;
+.AllFoodItemsPage {
+  margin-bottom: 85px;
 }
 
+.foodListingDiv {
+  width: 100vw;
+  height: 70px;
+  background-color: #eef7ef;
+  display: flex;
+  align-items: center;
+}
 
 .foodListing {
-    width: 90vw;
-    margin: auto;
-    display: flex;
-    justify-content: space-around;
-    column-gap: 10px;
-    background-color: #EEF7EF;
+  width: 90vw;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  column-gap: 10px;
+  background-color: #eef7ef;
 }
 
 .active {
-    max-width: 200px;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 3px 6px;
-    background-color: #4FAF5A;
+  max-width: 200px;
+  border-radius: 5px;
+  padding: 3px 6px;
+  background-color: #4faf5a;
+  border: none;
 }
 
 .nonActive {
-    max-width: 200px;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 3px 6px;
-    background-color: #EEF7EF;
+  max-width: 200px;
+  border: 1px solid #4faf5a;
+  border-radius: 5px;
+  padding: 3px 6px;
+  background-color: #eef7ef;
 }
- 
+
 .noFoodFound {
-    width: 90vw;
-    height: 50vh;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    font-weight: 600;
+  width: 90vw;
+  height: 50vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .noFoodExistForThisCategory {
-    width: 90vw;
-    margin: auto;
-    height: 50vh;
+  width: 90vw;
+  margin: auto;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Loader */
+.allFoodItemsLoaderDiv {
+    width: 100vw;
+    height: calc(100vh - 250px);
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+
+.allFoodItemsLoader {
+  width: 40px;
+  aspect-ratio: 1;
+  color: #4faf5a;
+  position: relative;
+  background: conic-gradient(from 134deg at top, currentColor 92deg, #0000 0)
+      top,
+    conic-gradient(from -46deg at bottom, currentColor 92deg, #0000 0) bottom;
+  background-size: 100% 50%;
+  background-repeat: no-repeat;
+}
+.allFoodItemsLoader:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  --g: currentColor 14.5px, #0000 0 calc(100% - 14.5px), currentColor 0;
+  background: linear-gradient(45deg, var(--g)),
+    linear-gradient(-45deg, var(--g));
+  animation: l7 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+}
+@keyframes l7 {
+  33% {
+    inset: -10px;
+    transform: rotate(0deg);
+  }
+  66% {
+    inset: -10px;
+    transform: rotate(90deg);
+  }
+  100% {
+    inset: 0;
+    transform: rotate(90deg);
+  }
+}
+
+
+.AllFoodItemsPageCategoryLoader {
+    width: 60px;
+    aspect-ratio: 2;
+    --_g: no-repeat radial-gradient(circle closest-side,#000 90%,#0000);
+    background: 
+      var(--_g) 0%   50%,
+      var(--_g) 50%  50%,
+      var(--_g) 100% 50%;
+    background-size: calc(100%/3) 50%;
+    animation: l3 1s infinite linear;
+  }
+  @keyframes l3 {
+      20%{background-position:0%   0%, 50%  50%,100%  50%}
+      40%{background-position:0% 100%, 50%   0%,100%  50%}
+      60%{background-position:0%  50%, 50% 100%,100%   0%}
+      80%{background-position:0%  50%, 50%  50%,100% 100%}
+  }
