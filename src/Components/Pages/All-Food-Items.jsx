@@ -25,7 +25,7 @@ function AllFoodItems() {
       const showAllFoodCategories = async(dispatch) => {
         dispatch(setLoading(true));
         try{
-          const response = await apiConnector("GET", "https://backend-fygl.onrender.com/api/category/showAllCategories");
+          const response = await apiConnector("GET", "http://localhost:4000/api/category/showAllCategories");
           // console.log("Show all categories response: ", response);
           if(response?.data){
             setShowAllCategory(response?.data?.allCategories);
@@ -54,7 +54,7 @@ function AllFoodItems() {
         dispatch(setLoading(true)); // Set loading to true before the request starts
         const response = await apiConnector(
           "POST",
-          "https://backend-fygl.onrender.com/api/category/details",
+          "http://localhost:4000/api/category/details",
           { categoryName: activeCategory }
         );
   

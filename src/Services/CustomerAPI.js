@@ -40,7 +40,7 @@ console.log("script load ho gyi jee aage error hoga")
     // Initiating the payment request to backend
     const orderResponse = await apiConnector(
         "POST",
-        "https://backend-fygl.onrender.com/api/v1/payment/capturePayment",
+        "http://localhost:4000/api/v1/payment/capturePayment",
         { foodItems , totalAmount, token },  
         { Authorization: `Bearer ${token}` }
       );
@@ -101,7 +101,7 @@ async function verifyOrderPayment(bodyData, token, navigate, dispatch) {
     console.log("body data",bodyData);
     const response = await apiConnector(
       "POST",
-      "https://backend-fygl.onrender.com/api/v1/payment/verifyPayment",
+      "http://localhost:4000/api/v1/payment/verifyPayment",
       {bodyData, token},
       { Authorization:`Bearer ${token}`}
     );
@@ -126,7 +126,7 @@ async function sendOrderSuccessEmail(response, amount, token, dispatch, navigate
   try {
     await apiConnector(
       "POST",
-      "https://backend-fygl.onrender.com/api/v1/payment/sendPaymentSuccessEmail",
+      "http://localhost:4000/api/v1/payment/sendPaymentSuccessEmail",
       {
         orderId: response.razorpay_order_id,
         paymentId: response.razorpay_payment_id,
